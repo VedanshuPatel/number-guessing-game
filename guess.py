@@ -6,9 +6,10 @@ class NumberGuess:
     def __init__(self):
         self.DEBUG_SECRET = 42   # For testing, set to a number such as 42. Set back to None before your final commit.
         self.TIME_LIMIT = 60       # Seconds allowed in Time Challenge mode
-        self.low=None
+        self.low=1
         self.high=None
         self.total_attempts = 0
+        self.attempts_allowed = 0
         self.win_flag = False
 
 
@@ -24,6 +25,25 @@ class NumberGuess:
 
         # ---------- Choose a level ----------
         # Goal: keep asking until the player picks a valid level, then set the range and attempt limit.
+        while True:
+            print("1. Easy")
+            print("2. Medium")
+            print("3. Hard")
+            difficulty = input("Please choose a difficulty level from the options above: ")
+            if difficulty == "1":
+                self.high = 50
+                self.attempts_allowed = 10
+                break
+            elif difficulty == "2":
+                self.high = 100
+                self.attempts_allowed = 8
+                break
+            elif difficulty == "3":
+                self.high = 500
+                self.attempts_allowed = 10
+                break
+            else:
+                print("Invalid input")
 
         # ---------- Choose a mode ----------
         # Goal: keep asking until the player picks Classic or Time Challenge.
