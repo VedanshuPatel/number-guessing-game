@@ -51,6 +51,9 @@ class NumberGuess:
         # ---------- Set up the round ----------
         # Goal: pick the secret number (use DEBUG_SECRET when it is not None) and start the clock.
         while not self.win_flag:
+            if self.attempts_allowed > self.total_attempts:
+                print(f"Sorry, you have reached the limit of attempts! The secret number is {self.DEBUG_SECRET}")
+                break
             guess = input("Please enter a number: ")
             if self.validate_guess(guess):
                 self.total_attempts += 1
