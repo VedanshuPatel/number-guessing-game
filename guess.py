@@ -2,22 +2,55 @@ import random
 import time
 
 # ---------- Settings ----------
-DEBUG_SECRET = None   # For testing, set to a number such as 42. Set back to None before your final commit.
-TIME_LIMIT = 60       # Seconds allowed in Time Challenge mode
+class NumberGuess:
+    def __init__(self):
+        self.DEBUG_SECRET = 42   # For testing, set to a number such as 42. Set back to None before your final commit.
+        self.TIME_LIMIT = 60       # Seconds allowed in Time Challenge mode
+        self.low=None
+        self.high=None
+        self.total_attempts = 0
+        self.win_flag = False
 
-print("Welcome to the Number Guessing Game")
 
-# ---------- Choose a level ----------
-# Goal: keep asking until the player picks a valid level, then set the range and attempt limit.
+    # ---------- Helper Functions ----------
+    def validate_guess(self,guess: str) -> bool:
+        guess = guess.strip()
+        if guess.isdigit():
+            return True
+        return False
 
-# ---------- Choose a mode ----------
-# Goal: keep asking until the player picks Classic or Time Challenge.
+    def start_game(self):
+        print("Welcome to the Number Guessing Game")
 
-# ---------- Set up the round ----------
-# Goal: pick the secret number (use DEBUG_SECRET when it is not None) and start the clock.
+        # ---------- Choose a level ----------
+        # Goal: keep asking until the player picks a valid level, then set the range and attempt limit.
 
-# ---------- Guess loop ----------
-# Goal: keep asking for guesses until the player wins, runs out of attempts, or runs out of time.
+        # ---------- Choose a mode ----------
+        # Goal: keep asking until the player picks Classic or Time Challenge.
 
-# ---------- End of round ----------
-# Goal: show the result that matches how the round ended.
+        # ---------- Set up the round ----------
+        # Goal: pick the secret number (use DEBUG_SECRET when it is not None) and start the clock.
+        while not self.win_flag:
+            guess = input("Please enter a number: ")
+            if self.validate_guess(guess):
+                self.total_attempts += 1
+                guess = int(guess)
+                if guess == self.DEBUG_SECRET:
+                    print(f"Congratulations! You guessed the number {self.DEBUG_SECRET} in {self.total_attempts} attempts!")
+                    self.win_flag = True
+                elif guess > self.DEBUG_SECRET:
+                    print("Too high!")
+                else:
+                    print("Too low!")
+            else:
+                print("Invalid input")
+
+        # ---------- Guess loop ----------
+        # Goal: keep asking for guesses until the player wins, runs out of attempts, or runs out of time.
+
+        # ---------- End of round ----------
+        # Goal: show the result that matches how the round ended.
+
+if __name__ == "__main__":
+    game = NumberGuess()
+    game.start_game()
