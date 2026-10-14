@@ -50,6 +50,10 @@ class NumberGuess:
 
         # ---------- Set up the round ----------
         # Goal: pick the secret number (use DEBUG_SECRET when it is not None) and start the clock.
+
+
+        # ---------- Guess loop ----------
+        # Goal: keep asking for guesses until the player wins, runs out of attempts, or runs out of time.
         while not self.win_flag:
             if self.attempts_allowed > self.total_attempts:
                 print(f"Sorry, you have reached the limit of attempts! The secret number is {self.DEBUG_SECRET}")
@@ -67,10 +71,6 @@ class NumberGuess:
                     print(f"Too low! Attempts left {self.attempts_allowed-self.total_attempts}!")
             else:
                 print("Invalid input")
-
-        # ---------- Guess loop ----------
-        # Goal: keep asking for guesses until the player wins, runs out of attempts, or runs out of time.
-
         # ---------- End of round ----------
         # Goal: show the result that matches how the round ended.
 
