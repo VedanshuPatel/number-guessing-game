@@ -59,9 +59,9 @@ class NumberGuess:
                     print(f"Congratulations! You guessed the number {self.DEBUG_SECRET} in {self.total_attempts} attempts!")
                     self.win_flag = True
                 elif guess > self.DEBUG_SECRET:
-                    print("Too high!")
+                    print(f"Too high! Attempts left {self.attempts_allowed-self.total_attempts}!")
                 else:
-                    print("Too low!")
+                    print("Too low! Attempts left {self.attempts_allowed-self.total_attempts}!")
             else:
                 print("Invalid input")
 
