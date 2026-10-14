@@ -64,7 +64,7 @@ class NumberGuess:
                 elif guess > self.DEBUG_SECRET:
                     print(f"Too high! Attempts left {self.attempts_allowed-self.total_attempts}!")
                 else:
-                    print("Too low! Attempts left {self.attempts_allowed-self.total_attempts}!")
+                    print(f"Too low! Attempts left {self.attempts_allowed-self.total_attempts}!")
             else:
                 print("Invalid input")
 
