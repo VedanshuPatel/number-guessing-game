@@ -59,7 +59,7 @@ class NumberGuess:
                 print(f"Sorry, you have reached the limit of attempts! The secret number is {self.DEBUG_SECRET}")
                 break
             guess = input("Please enter a number: ")
-            if self.validate_guess(guess) and (int(guess) >= self.low and int(guess) <= self.high):
+            if self.validate_guess(guess) and (self.low <= int(guess) <= self.high):
                 self.total_attempts += 1
                 guess = int(guess)
                 if guess == self.DEBUG_SECRET:
