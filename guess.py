@@ -55,7 +55,7 @@ class NumberGuess:
         # ---------- Guess loop ----------
         # Goal: keep asking for guesses until the player wins, runs out of attempts, or runs out of time.
         while not self.win_flag:
-            if self.attempts_allowed > self.total_attempts:
+            if self.attempts_allowed <= self.total_attempts:
                 print(f"Sorry, you have reached the limit of attempts! The secret number is {self.DEBUG_SECRET}")
                 break
             guess = input("Please enter a number: ")
