@@ -39,9 +39,9 @@ class NumberGuess:
         # ---------- Choose a level ----------
         # Goal: keep asking until the player picks a valid level, then set the range and attempt limit.
         while True:
-            print("1. Easy")
-            print("2. Medium")
-            print("3. Hard")
+            print("1. Easy (1 to 50)")
+            print("2. Medium (1 to 100)")
+            print("3. Hard (1 to 500)")
             difficulty = input("Please choose a difficulty level from the options above: ")
             if difficulty == "1":
                 self.high = 50
