@@ -82,10 +82,10 @@ class NumberGuess:
         # ---------- Guess loop ----------
         # Goal: keep asking for guesses until the player wins, runs out of attempts, or runs out of time.
         while not self.win_flag:
-            if self.attempts_allowed <= self.total_attempts:
+            if self.attempts_allowed <= self.total_attempts: # Condition to check if the user has exhaused all the attempts
                 print(f"Sorry, you have reached the limit of attempts! The secret number is {self.DEBUG_SECRET}")
                 break
-            if self.time_flag:
+            if self.time_flag: # Condition to check the time limit in the time challenge
                 elapsed_time = time.time() - start_time
                 if elapsed_time >= self.TIME_LIMIT:
                     print(f"Time limit reached! The secret number is {self.DEBUG_SECRET}")
@@ -93,8 +93,8 @@ class NumberGuess:
                 print(f"Time left: {self.TIME_LIMIT - elapsed_time} seconds")
 
             guess = input("Please enter a number: ")
-            if self.validate_guess(guess) and (self.low <= int(guess) <= self.high):
-                if self.time_flag:
+            if self.validate_guess(guess) and (self.low <= int(guess) <= self.high): #Condition to check if the input is valid
+                if self.time_flag: # Condition to check the time limit in the time challenge
                     elapsed_time = time.time() - start_time
                     if elapsed_time >= self.TIME_LIMIT:
                         print(f"Time limit reached! The secret number is {self.DEBUG_SECRET}")
