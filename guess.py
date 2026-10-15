@@ -11,6 +11,7 @@ class NumberGuess:
         self.total_attempts = 0
         self.attempts_allowed = 0
         self.win_flag = False
+        self.time_flag = False
 
 
     # ---------- Helper Functions ----------
@@ -47,6 +48,17 @@ class NumberGuess:
 
         # ---------- Choose a mode ----------
         # Goal: keep asking until the player picks Classic or Time Challenge.
+        while True:
+            print("1. Classic")
+            print("2. Time Challenge")
+            challenge_option = input("Please choose a challenge type from the options above: ")
+            if challenge_option == "1":
+                self.time_flag = False
+            elif challenge_option == "2":
+                self.time_flag = True
+            else:
+                print("Invalid input")
+
 
         # ---------- Set up the round ----------
         # Goal: pick the secret number (use DEBUG_SECRET when it is not None) and start the clock.
