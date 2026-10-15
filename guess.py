@@ -64,7 +64,8 @@ class NumberGuess:
 
         # ---------- Set up the round ----------
         # Goal: pick the secret number (use DEBUG_SECRET when it is not None) and start the clock.
-        start_time = time.time()
+        if self.time_flag:
+            start_time = time.time()
 
         # ---------- Guess loop ----------
         # Goal: keep asking for guesses until the player wins, runs out of attempts, or runs out of time.
@@ -74,7 +75,7 @@ class NumberGuess:
                 break
             if self.time_flag:
                 elapsed_time = time.time() - start_time
-                if elapsed_time > self.TIME_LIMIT:
+                if elapsed_time >= self.TIME_LIMIT:
                     print(f"Time limit reached! The secret number is {self.DEBUG_SECRET}")
                     break
                 print(f"Time left: {self.TIME_LIMIT - elapsed_time} seconds")
@@ -83,11 +84,15 @@ class NumberGuess:
             if self.validate_guess(guess) and (self.low <= int(guess) <= self.high):
                 if self.time_flag:
                     elapsed_time = time.time() - start_time
-                    if elapsed_time > self.TIME_LIMIT:
+                    if elapsed_time >= self.TIME_LIMIT:
                         print(f"Time limit reached! The secret number is {self.DEBUG_SECRET}")
                         break
                 self.total_attempts += 1
                 guess = int(guess)
+
+        # ---------- End of round ----------
+        # Goal: show the result that matches how the round ended.
+
                 if guess == self.DEBUG_SECRET:
                     print(f"Congratulations! You guessed the number {self.DEBUG_SECRET} in {self.total_attempts} attempts!")
                     self.win_flag = True
@@ -97,8 +102,7 @@ class NumberGuess:
                     print(f"Too low! Attempts left {self.attempts_allowed-self.total_attempts}!")
             else:
                 print("Invalid input")
-        # ---------- End of round ----------
-        # Goal: show the result that matches how the round ended.
+
 
 if __name__ == "__main__":
     game = NumberGuess()
