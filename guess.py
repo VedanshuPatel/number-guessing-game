@@ -7,7 +7,7 @@ class NumberGuess:
     This class represents a Number Guessing Game which has attempt limits,time challenge and difficulty levels.
     """
     def __init__(self):
-        self.DEBUG_SECRET = 42   # For testing, set to a number such as 42. Set back to None before your final commit.
+        self.DEBUG_SECRET = None   # For testing, set to a number such as 42. Set back to None before your final commit.
         self.TIME_LIMIT = 60       # Seconds allowed in Time Challenge mode
         self.low=1               # Lower bound of number range
         self.high=None           # Upper bound of the number game, changes based on difficulty
@@ -76,6 +76,7 @@ class NumberGuess:
 
         # ---------- Set up the round ----------
         # Goal: pick the secret number (use DEBUG_SECRET when it is not None) and start the clock.
+        self.DEBUG_SECRET = random.randint(1, self.high)
         if self.time_flag:
             start_time = time.time()
 
