@@ -3,25 +3,37 @@ import time
 
 # ---------- Settings ----------
 class NumberGuess:
+    """
+    This class represents a Number Guessing Game which has attempt limits,time challenge and difficulty levels.
+    """
     def __init__(self):
         self.DEBUG_SECRET = 42   # For testing, set to a number such as 42. Set back to None before your final commit.
         self.TIME_LIMIT = 60       # Seconds allowed in Time Challenge mode
-        self.low=1
-        self.high=None
-        self.total_attempts = 0
-        self.attempts_allowed = 0
-        self.win_flag = False
-        self.time_flag = False
+        self.low=1               # Lower bound of number range
+        self.high=None           # Upper bound of the number game, changes based on difficulty
+        self.total_attempts = 0  # total attempts by the user
+        self.attempts_allowed = 0 # attempts allowed by the game
+        self.win_flag = False  # A flag to check if the user won
+        self.time_flag = False # A flag to check if its a time challenge
 
 
     # ---------- Helper Functions ----------
     def validate_guess(self,guess: str) -> bool:
+        """
+        The function checks if the guess is valid input or not.
+        :param guess:  the input given by the user.
+        :return: A boolean which says if the guess is valid or not.
+        """
         guess = guess.strip()
         if guess.isdigit():
             return True
         return False
 
     def start_game(self):
+        """
+        The main loop of the game where the user does all the selections in the game.
+        :return: The output according to the rules and conditions of the game
+        """
         print("Welcome to the Number Guessing Game")
 
         # ---------- Choose a level ----------
